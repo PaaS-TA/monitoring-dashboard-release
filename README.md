@@ -4,11 +4,13 @@
 ```
  $ git clone https://github.com/PaaS-TA/PaaS-TA-Monitoring-Release.git
  
- cd PaaS-TA-Monitoring-Release
+ $ cd PaaS-TA-Monitoring-Release
  
- wget -O src.zip http://45.248.73.44/index.php/s/DJeCSxr747fP7Yx
+ $ wget -O src.zip http://45.248.73.44/index.php/s/DJeCSxr747fP7Yx/download
  
- unzip src.zip
+ $ unzip src.zip
+ 
+ $ rm src.zipcd
  ```
  
  
