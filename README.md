@@ -16,13 +16,13 @@
  
 ## 2. PaaS-TA-Monitoring Release Upload
 ```
- sh create.sh
+ $ sh create.sh
 ``` 
 
 
 ## 3. PaaS-TA-Monitoring Deploy
 ```
- cd deployments
+ $ cd deployments
  
- sh deploy-paasta-monitoring.sh
+ $ sh deploy-paasta-monitoring.sh
  ```
