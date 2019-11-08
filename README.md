@@ -6,7 +6,7 @@
  
  cd PaaS-TA-Monitoring-Release
  
- wget -O src.zip http://45.248.73.44/index.php/s/yr9JK7efeYEXExZ/download
+ wget -O src.zip http://45.248.73.44/index.php/s/DJeCSxr747fP7Yx
  
  unzip src.zip
  ```
