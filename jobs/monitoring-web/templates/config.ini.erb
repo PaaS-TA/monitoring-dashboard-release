@@ -65,7 +65,7 @@ redis.db=0
 prometheus.addr=http://<%= p("monitoring-web.prometheus.url") %>
 
 #Caas k8s ApiServer URL
-kubernetesApi.addr=http://<%= p("monitoring-web.kubernetes.url") %>
+kubernetesApi.addr=https://<%= p("monitoring-web.kubernetes.url") %>
 kubernetes.admin.token=<%= p("monitoring-web.kubernetes.token") %>
 #SaaS Pinpoint Url
 saas.pinpoint.url=http://<%= p("monitoring-web.pinpoint.url") %>
