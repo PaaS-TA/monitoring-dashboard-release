@@ -1,0 +1,23 @@
+﻿#MonitoringDB 접속 정보
+monitoring.db.type=mysql
+#PaastaMonitoring 먼저 생성 해야함.
+monitoring.db.dbname=PaastaMonitoring
+monitoring.db.username=<%= p("caas-monitoring-batch.db.username") %>
+monitoring.db.password=<%= p("caas-monitoring-batch.db.password") %>
+monitoring.db.host=<%= p("caas-monitoring-batch.db.ip") %>
+monitoring.db.port=<%= p("caas-monitoring-batch.db.port") %>
+
+
+#mail.smtp.host=smtp.gmail.com
+#mail.smtp.port=465
+mail.smtp.host=<%= p("caas-monitoring-batch.mail.smtp.url") %>
+mail.smtp.port=<%= p("caas-monitoring-batch.mail.smtp.port") %>
+mail.sender=<%= p("caas-monitoring-batch.mail.sender.name") %>
+mail.sender.password=<%= p("caas-monitoring-batch.mail.sender.password") %>
+mail.resource.url=<%= p("caas-monitoring-batch.mail.resource.url") %>
+
+#Telegram
+#telegram.SaaS.token=925274746:AAFAU6w5WadrHJ2cOTpX-mRuWUpi-ZzylcI
+#telegram.CaaS.token=857394197:AAEnkrLk7S_-1dvcLCo1tSzYLomTkoPsUFA
+# CaaS Info
+caas.monitoring.api.url=http://<%= p("caas-monitoring-batch.public.url") %>

@@ -1,0 +1,84 @@
+name: paasta-monitoring-release
+version: "5.0"
+commit_hash: non-git
+uncommitted_changes: false
+jobs:
+- name: caas-monitoring-batch
+  version: 3faa88ad6e8db5af3d734298a7f8d79d8cfcd137427e858b3251a8958274645a
+  fingerprint: 3faa88ad6e8db5af3d734298a7f8d79d8cfcd137427e858b3251a8958274645a
+  sha1: sha256:1ca354fa38ce67e0949e8422ee092decb3c0edac406697b298bca915c2891405
+  packages:
+  - golang
+  - pidutils
+  - caas-monitoring-batch
+- name: mariadb
+  version: 5b6f5ab7abf3bb8d72ca26d7e39d2c2c27c4474cbb4b6ae5b4b9e4112ff7d03b
+  fingerprint: 5b6f5ab7abf3bb8d72ca26d7e39d2c2c27c4474cbb4b6ae5b4b9e4112ff7d03b
+  sha1: sha256:26fc5346c9e6bc8a71b6bcbcbdd0c24f4bad7d6687636ca1b3da39edf4145c39
+  packages:
+  - mariadb
+- name: monitoring-batch
+  version: 13395e38f53c343c7e80545f26bc85a03c91343f21fc8d8f1bd8d9cfbb236273
+  fingerprint: 13395e38f53c343c7e80545f26bc85a03c91343f21fc8d8f1bd8d9cfbb236273
+  sha1: sha256:c813cb5ab841395bcd1d71d60b022785659534a1348f3f26d999e10030affc60
+  packages:
+  - golang
+  - pidutils
+  - monitoring-batch
+- name: monitoring-web
+  version: ca29115bc8bd0554eb4c96f27a87d9a79e6ca73830dc4695727582e560dc6f42
+  fingerprint: ca29115bc8bd0554eb4c96f27a87d9a79e6ca73830dc4695727582e560dc6f42
+  sha1: sha256:226f86d087f4d14caa5a0ed62515f7bbe1acb62e8485f7f883d3b58b6b3f1e97
+  packages:
+  - golang
+  - pidutils
+  - monitoring-web
+- name: saas-monitoring-batch
+  version: b9383917deb67c70c12d767e6f34f35541718bf5c277896864869cd367dac951
+  fingerprint: b9383917deb67c70c12d767e6f34f35541718bf5c277896864869cd367dac951
+  sha1: sha256:048d8e188e50323c3a587505aabb52da25de8f602c9c97d8d9d830b339497848
+  packages:
+  - golang
+  - pidutils
+  - saas-monitoring-batch
+packages:
+- name: caas-monitoring-batch
+  version: 517d1f4bc08f928b29c328799012f1cba5f49b932c393c59f93a7e1cda019814
+  fingerprint: 517d1f4bc08f928b29c328799012f1cba5f49b932c393c59f93a7e1cda019814
+  sha1: sha256:059d7205e9d09f2e2e65131832e35d851c6fccdc7539e8678b2e99848bbde9f0
+  dependencies:
+  - golang
+- name: golang
+  version: c6f998b8a97ce5805eb2b5f200ae08a2baa747ae1850c25f584f03525af4289d
+  fingerprint: c6f998b8a97ce5805eb2b5f200ae08a2baa747ae1850c25f584f03525af4289d
+  sha1: sha256:291478025eb5b462cc8b0f02044b753cc054a996149a216f65c810417c6e7a5f
+  dependencies: []
+- name: mariadb
+  version: 58ac36a2442476225404b51a24985c3b6394e2772ad23e4adbbcff86b752d09f
+  fingerprint: 58ac36a2442476225404b51a24985c3b6394e2772ad23e4adbbcff86b752d09f
+  sha1: sha256:161093033293ce84af9fc5c813c2de98668cbe0cb1043a47f3332f0fa0436a22
+  dependencies: []
+- name: monitoring-batch
+  version: 0cd9d8211558bf78eb9c8903302f34d42c87150d4c3d8af3e5431a27e00cf736
+  fingerprint: 0cd9d8211558bf78eb9c8903302f34d42c87150d4c3d8af3e5431a27e00cf736
+  sha1: sha256:7ab5d6d2564bcf2aaad0f837e7c11dbcbc85027145406f9a055b271c35c5e3ec
+  dependencies:
+  - golang
+- name: monitoring-web
+  version: 047eac6b83ded1f75ef6cb8509e9e540f1e7911142dce0d35d05c435139b09c0
+  fingerprint: 047eac6b83ded1f75ef6cb8509e9e540f1e7911142dce0d35d05c435139b09c0
+  sha1: sha256:87562227f3513dbaee92e6fd92521db4721c4e9dad4f49db4c22268e61fe4f5c
+  dependencies:
+  - golang
+  - monitoring-batch
+- name: pidutils
+  version: a7b8f40a8905c5ca1f74de0b78a7f4e15bf20a806aa7ca08c9806af12dd34255
+  fingerprint: a7b8f40a8905c5ca1f74de0b78a7f4e15bf20a806aa7ca08c9806af12dd34255
+  sha1: sha256:f962e5e0d9137d9409153d8b4b64394f74bdcd99da38cc014ebb235e6c3c0551
+  dependencies: []
+- name: saas-monitoring-batch
+  version: afb69d7c1b691e01a20c0d6416f871e5b056aebde95c0cd8c52faa638e5e33ba
+  fingerprint: afb69d7c1b691e01a20c0d6416f871e5b056aebde95c0cd8c52faa638e5e33ba
+  sha1: sha256:23fed0adbbe9e0926e7018e1da6bacd397e42e31faea55765b14eea5f47851cd
+  dependencies:
+  - golang

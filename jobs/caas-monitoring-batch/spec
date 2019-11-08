@@ -1,0 +1,59 @@
+---
+name: caas-monitoring-batch
+templates:
+  monitoring-batch_ctl.erb: bin/monitoring-batch_ctl
+  config.ini.erb: config/config.ini
+
+packages:
+  - golang
+  - pidutils
+  - caas-monitoring-batch
+
+consumes:
+  - name: mariadb
+    type: database
+    optional: true
+
+properties:
+  caas-monitoring-batch.db.username:
+    default: root
+    description: "maria Database root user"
+
+  caas-monitoring-batch.db.password:
+    default: password
+    description: "maria Database root user PWD"
+
+  caas-monitoring-batch.db.ip:
+    description: "maria Database IP"
+
+  caas-monitoring-batch.db.port:
+    default: 3306
+    description: "maria Database port"
+
+  caas-monitoring-batch.mail.smtp.url:
+    description: "smtp server url"
+
+  caas-monitoring-batch.mail.smtp.port:
+    default: 25
+    description: "smtp server url"
+
+  caas-monitoring-batch.mail.sender.name:
+    description: "smtp user name"
+
+  caas-monitoring-batch.mail.sender.password:
+    description: "smtp server sender password"
+
+  caas-monitoring-batch.mail.resource.url:
+    description: "mail resource(image) url"
+
+  caas-monitoring-batch.mail.send:
+    default: true
+    description: "alarm send with email when alarm occured"
+
+  caas-monitoring-batch.mail.tls:
+    default: true
+    description: "smtp server auth with tls"
+
+  caas-monitoring-batch.public.url:
+    description: "public url"
+
