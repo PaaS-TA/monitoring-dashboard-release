@@ -10,7 +10,7 @@
  
  $ unzip src.zip
  
- $ rm src.zipcd
+ $ rm src.zip
  ```
  
  
