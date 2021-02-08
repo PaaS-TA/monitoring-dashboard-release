@@ -18,5 +18,3 @@ cp src/kr/paasta/monitoring/log_config.xml $GOBIN
 
 cd src/kr/paasta/monitoring/
 cp -R public/ $GOBIN
-#tar -zcvf public.tar.gz public/
-#cp public.tar.gz  $GOBIN

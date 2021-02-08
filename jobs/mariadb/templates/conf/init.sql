@@ -5,3 +5,5 @@ FLUSH PRIVILEGES;
 
 CREATE DATABASE IF NOT EXISTS PaastaMonitoring CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+delete from mysql.user where user='';
+set global slow_query_log = ON;

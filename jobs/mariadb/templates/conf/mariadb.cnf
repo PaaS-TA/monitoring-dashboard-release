@@ -27,6 +27,10 @@ max_allowed_packet = 256M
 general_log = 1
 general_log_file = /var/vcap/sys/log/mariadb/mariadb-general.log
 
+# added by monitoring
+slow_query_log_file = /var/vcap/store/mariadb-data/mariadb-slow.log
+user = vcap
+
 # Remove leading # to set options mainly useful for reporting servers.
 # The server defaults are faster for transactions and fast SELECTs.
 # Adjust sizes as needed, experiment to find the optimal values.
