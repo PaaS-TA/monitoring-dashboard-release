@@ -2,14 +2,11 @@
 
 set -e
 
-DATA_DIR=/var/vcap/store/mariadb-data
-
-
 JOB_NAME=mariadb
 JOB_PATH=/var/vcap/jobs/$JOB_NAME
 BASE_DIR=/var/vcap/store/$JOB_NAME
 
-$BASE_DIR/bin/mysql -u root < $JOB_PATH/conf/init.sql
+sudo $BASE_DIR/bin/mysql -u root < $JOB_PATH/conf/init.sql
 
 #U-07
-sudo chown -R vcap:vcap /var/vcap/store/mariadb-10.1.48-linux-x86_64
+sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.5.8-linux-x86_64
