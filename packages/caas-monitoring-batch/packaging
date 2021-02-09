@@ -3,6 +3,9 @@ set -e -x
 
 cd caas-monitoring-batch
 
+export GOCACHE=/var/vcap/packages/golang/.cache/go-build
+mkdir -p $GOCACHE
+
 export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$PWD
 export GOBIN=${BOSH_INSTALL_TARGET}
