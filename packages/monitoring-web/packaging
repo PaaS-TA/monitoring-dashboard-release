@@ -7,6 +7,9 @@ export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$PWD
 export GOBIN=${BOSH_INSTALL_TARGET}
 export PATH=$PATH:$GOROOT/bin
+export GOCACHE=$GOROOT/.cache/go-build
+
+mkdir -p $GOCACHE
 
 go version
 
@@ -18,5 +21,3 @@ cp src/kr/paasta/monitoring/log_config.xml $GOBIN
 
 cd src/kr/paasta/monitoring/
 cp -R public/ $GOBIN
-#tar -zcvf public.tar.gz public/
-#cp public.tar.gz  $GOBIN
