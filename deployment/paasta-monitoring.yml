@@ -2,269 +2,288 @@
 name: paasta-monitoring
 
 addons:
-- name: bpm
-  jobs:
   - name: bpm
-    release: bpm
+    jobs:
+      - name: bpm
+        release: bpm
 
 stemcells:
-- alias: default
-  os: ubuntu-xenial
-  version: '315.36'
+  - alias: default
+    os: ((stemcell_os))
+    version: ((stemcell_version))
 
 releases:
-- name: paasta-monitoring-release
-  version: "latest"
-- name: bpm
-  sha1: 44ffa71e70adfb262655253662c83148581ac970
-  version: '1.1.0'
-- name: redis
-  version: '14.0.1'
-  url: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/paasta-monitoring/redis-14.0.1.tgz
-  sha1: fd4a6107e1fb8aca1d551054d8bc07e4f53ddf05
-- name: influxdb
-  version: '1.5.1'
-  url: file:///home/((inception_os_user_name))/workspace/paasta-5.0/release/paasta-monitoring/influxdb.tgz
-  sha1: 2337d1f26f46100b8d438b50b71e300941da74a2
+  - name: paasta-monitoring-release
+    sha1: 99d541572bfaf87abc2cb61ad25f4dc8b25986ec
+    version: "5.5"
+    url: https://nextcloud.paas-ta.org/index.php/s/9G4LeT2TD8i8ebE/download
+  - name: bpm
+    sha1: 07f86828ea9a81f9c7ba6a33590959a53b13fe13
+    url: https://nextcloud.paas-ta.org/index.php/s/6obwAYn8s9Jkgks/download
+    version: '1.1.9'
+  - name: redis
+    version: '15.3.5'
+    url: https://nextcloud.paas-ta.org/index.php/s/RDE9JzwNCggGNXq/download
+    sha1: fe0ff226d209bb8e1ae4a8211a201a2367653df9
+  - name: influxdb
+    version: '1.8.4'
+    url: https://nextcloud.paas-ta.org/index.php/s/aRsn6Yy3HsHWKoE/download
+    sha1: bb91d4aa3f48780c6fb7d5efb5bbc3a83d44b977
 
 
 instance_groups:
-- name: redis
-  azs: [z4]
-  instances: 1
-  vm_type: small
-  stemcell: default
-  persistent_disk: 10240
-  networks:
-  - name: ((private_network_name))
-    static_ips:
-    - ((redis_ip))
- 
-  jobs:
   - name: redis
-    release: redis
-    properties:
-      password: ((redis_password))
-- name: sanity-tests
-  azs: [z4]
-  instances: 1
-  lifecycle: errand
-  vm_type: small
-  stemcell: default
-  networks: [{name: ((private_network_name))}]
-  jobs:
+    azs: ((redis_azs))
+    instances: ((redis_instances))
+    vm_type: ((redis_vm_type))
+    stemcell: default
+    persistent_disk: 10240
+    networks:
+      - name: ((redis_network))
+        static_ips:
+          - ((redis_ip))
+
+    jobs:
+      - name: redis
+        release: redis
+        properties:
+          password: ((redis_password))
+          protected_mode: ((redis_protected_mode))
   - name: sanity-tests
-    release: redis
+    azs: ((sanity_tests_azs))
+    instances: ((sanity_tests_instances))
+    lifecycle: errand
+    vm_type: ((sanity_tests_vm_type))
+    stemcell: default
+    networks: [{name: ((sanity_tests_network))}]
+    jobs:
+      - name: sanity-tests
+        release: redis
 
-- name: influxdb
-  azs: [z5]
-  instances: 1
-  vm_type: large
-  stemcell: default
-  persistent_disk_type: 10GB
-  networks:
-  - name: ((private_network_name))
-    static_ips:
-    - ((influxdb_ip)) 
-
-  jobs:
   - name: influxdb
-    release: influxdb
-    properties:
-      influxdb:
-        database: cf_metric_db
-        user: root
-        password: root
-        replication: 1
-        ips: 127.0.0.1
-  - name: chronograf
-    release: influxdb
+    azs: ((influxdb_azs))
+    instances: ((influxdb_instances))
+    vm_type: ((influxdb_vm_type))
+    stemcell: default
+    persistent_disk_type: ((influxdb_persistent_disk_type))
+    networks:
+      - name: ((influxdb_network))
+        static_ips:
+          - ((metric_url))
 
-- name: mariadb
-  azs: [z5]
-  instances: 1
-  vm_type: medium 
-  stemcell: default
-  persistent_disk_type: 5GB
-  networks:
-  - name: ((private_network_name))
-    static_ips: 
-    - ((mariadb_ip))
-  jobs:
+    jobs:
+      - name: influxdb
+        release: influxdb
+        properties:
+          influxdb:
+            database: cf_metric_db
+            user: root
+            password: root
+            replication: 1
+            ips: 127.0.0.1
+            https_enabled: ((influxdb_https_enabled))
+            pem_key: ((influxdb_ssl.certificate))((influxdb_ssl.private_key))
+      - name: chronograf
+        release: influxdb
+
   - name: mariadb
-    release: paasta-monitoring-release
-    properties:
-      mariadb:
-        port: ((mariadb_port))
-        admin_user:
-          password: '((mariadb_password))'
+    azs: ((mariadb_azs))
+    instances: ((mariadb_instances))
+    vm_type: ((mariadb_vm_type))
+    stemcell: default
+    persistent_disk_type: ((mariadb_persistent_disk_type))
+    networks:
+      - name: ((mariadb_network))
+        static_ips:
+          - ((mariadb_ip))
+    jobs:
+      - name: mariadb
+        release: paasta-monitoring-release
+        properties:
+          mariadb:
+            port: ((mariadb_port))
+            admin_user:
+              password: '((mariadb_password))'
 
-- name: monitoring-batch
-  azs: [z6]
-  instances: 1
-  vm_type: small 
-  stemcell: default
-  networks:
-  - name: ((private_network_name))
-  jobs:
   - name: monitoring-batch
-    release: paasta-monitoring-release
-    consumes:
-      influxdb: {from: influxdb}
-    properties:
-      monitoring-batch:
-        influxdb:
-          url: ((influxdb_ip)):8086
-        db:
-          ip: ((mariadb_ip))
-          port: ((mariadb_port))
-          username: ((mariadb_username))
-          password: ((mariadb_password))
-        paasta:
-          cell_prefix: ((paasta_cell_prefix))
-        bosh:
-          url: ((bosh_url))
-          password: ((bosh_password))
-          director_name: ((director_name))
-          paasta:
-            deployments: ((paasta_deploy_name))
-        mail:
-          smtp:
-            url: ((smtp_url))
-            port: ((smtp_port))
-          sender:
-            name: ((mail_sender))
-            password: ((mail_password))
-          resource:
-            url: ((resource_url))
-          send: ((mail_enable))
-          tls: ((mail_tls_enable))
-        redis:
-          url: ((redis_ip)):6379
-          password: ((redis_password))
-        paasta:
-          apiurl: http://api.((system_domain))
-          uaaurl: https://uaa.((system_domain))
-          username: ((paasta_username))
-          password: ((paasta_password))
+    azs: ((monitoring_batch_azs))
+    instances: ((monitoring_batch_instances))
+    vm_type: ((monitoring_batch_vm_type))
+    stemcell: default
+    networks:
+      - name: ((monitoring_batch_network))
+    jobs:
+      - name: monitoring-batch
+        release: paasta-monitoring-release
+        consumes:
+          influxdb: {from: influxdb}
+        properties:
+          monitoring-batch:
+            influxdb:
+              url: ((metric_url)):8086
+            db:
+              ip: ((mariadb_ip))
+              port: ((mariadb_port))
+              username: ((mariadb_username))
+              password: ((mariadb_password))
+            paasta:
+              cell_prefix: ((paasta_cell_prefix))
+            bosh:
+              url: ((bosh_ip))
+              password: ((bosh_client_admin_secret))
+              director_name: ((director_name))
+              paasta:
+                deployments: ((paasta_deploy_name))
+            mail:
+              smtp:
+                url: ((smtp_url))
+                port: ((smtp_port))
+              sender:
+                name: ((mail_sender))
+                password: ((mail_password))
+              resource:
+                url: ((resource_url))
+              send: ((mail_enable))
+              tls: ((mail_tls_enable))
+            redis:
+              url: ((redis_ip)):6379
+              password: ((redis_password))
+            paasta:
+              apiurl: http://api.((system_domain))
+              uaaurl: https://uaa.((system_domain))
+              username: ((paasta_admin_username))
+              password: ((paasta_admin_password))
 
-- name: caas-monitoring-batch
-  azs: [z6]
-  instances: 1
-  vm_type: small
-  stemcell: default
-  networks:
-  - name: default
-  jobs:
   - name: caas-monitoring-batch
-    release: paasta-monitoring-release
-    consumes:
-      influxdb: {from: influxdb}
-    properties:
-      caas-monitoring-batch:
-        db:
-          ip: ((mariadb_ip))
-          port: ((mariadb_port))
-          username: ((mariadb_username))
-          password: ((mariadb_password))
-        mail:
-          smtp:
-            url: ((smtp_url))
-            port: ((smtp_port))
-          sender:
-            name: ((mail_sender))
-            password: ((mail_password))
-          resource:
-            url: ((resource_url))
-          send: ((mail_enable))
-          tls: ((mail_tls_enable))
-        public:
-          url: ((monit_public_ip)):8080
+    azs: ((caas_monitoring_batch_azs))
+    instances: ((monitoring_batch_instances))
+    vm_type: ((caas_monitoring_batch_vm_type))
+    stemcell: default
+    networks:
+      - name: ((caas_monitoring_batch_network))
+    jobs:
+      - name: caas-monitoring-batch
+        release: paasta-monitoring-release
+        consumes:
+          influxdb: {from: influxdb}
+        properties:
+          caas-monitoring-batch:
+            db:
+              ip: ((mariadb_ip))
+              port: ((mariadb_port))
+              username: ((mariadb_username))
+              password: ((mariadb_password))
+            mail:
+              smtp:
+                url: ((smtp_url))
+                port: ((smtp_port))
+              sender:
+                name: ((mail_sender))
+                password: ((mail_password))
+              resource:
+                url: ((resource_url))
+              send: ((mail_enable))
+              tls: ((mail_tls_enable))
+            public:
+              url: ((monitoring_api_url)):8080
 
-- name: saas-monitoring-batch
-  azs: [z6]
-  instances: 1
-  vm_type: small
-  stemcell: default
-  networks:
-  - name: default
-  jobs:
   - name: saas-monitoring-batch
-    release: paasta-monitoring-release
-    consumes:
-      influxdb: {from: influxdb}
-    properties:
-     saas-monitoring-batch:
-        db:
-          ip: ((mariadb_ip))
-          port: ((mariadb_port))
-          username: ((mariadb_username))
-          password: ((mariadb_password))
-        mail:
-          smtp:
-            url: ((smtp_url))
-            port: ((smtp_port))
-          sender:
-            name: ((mail_sender))
-            password: ((mail_password))
-          resource:
-            url: ((resource_url))
-          send: ((mail_enable))
-          tls: ((mail_tls_enable))
-        pinpoint:
-          url: ((pinpoint_ip)):8079
+    azs: ((saas_monitoring_batch_azs))
+    instances: ((saas_monitoring_batch_instances))
+    vm_type: ((saas_monitoring_batch_vm_type))
+    stemcell: default
+    networks:
+      - name: ((saas_monitoring_batch_network))
+    jobs:
+      - name: saas-monitoring-batch
+        release: paasta-monitoring-release
+        consumes:
+          influxdb: {from: influxdb}
+        properties:
+          saas-monitoring-batch:
+            db:
+              ip: ((mariadb_ip))
+              port: ((mariadb_port))
+              username: ((mariadb_username))
+              password: ((mariadb_password))
+            mail:
+              smtp:
+                url: ((smtp_url))
+                port: ((smtp_port))
+              sender:
+                name: ((mail_sender))
+                password: ((mail_password))
+              resource:
+                url: ((resource_url))
+              send: ((mail_enable))
+              tls: ((mail_tls_enable))
+            pinpoint:
+              url: ((saas_monitoring_url)):8079
 
-- name: monitoring-web
-  azs: [z7]
-  instances: 1
-  vm_type: small 
-  stemcell: default
-  networks:
-  - name: ((private_network_name))
-    default: [dns, gateway]
-  - name: ((public_network_name))
-    static_ips: [((monit_public_ip))]
-
-  jobs:
   - name: monitoring-web
-    release: paasta-monitoring-release
-    properties:
-      monitoring-web:
-        db:
-          ip: ((mariadb_ip))
-          port: ((mariadb_port))
-          username: ((mariadb_username))
-          password: ((mariadb_password))
-        influxdb:
-          url: http://((influxdb_ip)):8086
-        paasta:
-          system_domain: ((system_domain))
-        bosh:
-          ip: ((bosh_url))
-          password: ((bosh_password))
-          director_name: ((director_name))
-        redis:
-          url: ((redis_ip)):6379
-          password: ((redis_password))
-        time:
-          gap: ((utc_time_gap))
-        prometheus:
-          url: ((prometheus_ip)):30090
-        kubernetes:
-          url: ((kubernetes_ip)):8443
-          token: ((kubernetes_token))
-        pinpoint:
-          url: ((pinpoint_ip)):8079
-        pinpointWas:
-          url: ((pinpoint_was_ip)):8080
-        caasbroker:
-          url: ((cassbroker_ip)):3334
-        system:
-          type: ((system_type))
+    azs: ((monitoring_web_azs))
+    instances: ((monitoring_web_instances))
+    vm_type: ((monitoring_web_vm_type))
+    stemcell: default
+    networks:
+      - name: ((monitoring_web_network))
+        default: [dns, gateway]
+      - name: ((public_network_name))
+        static_ips: [((monitoring_api_url))]
+
+    jobs:
+      - name: monitoring-web
+        release: paasta-monitoring-release
+        properties:
+          monitoring-web:
+            db:
+              ip: ((mariadb_ip))
+              port: ((mariadb_port))
+              username: ((mariadb_username))
+              password: ((mariadb_password))
+            influxdb:
+              url: http://((metric_url)):8086
+            paasta:
+              system_domain: ((system_domain))
+            bosh:
+              ip: ((bosh_ip))
+              password: ((bosh_client_admin_secret))
+              director_name: ((director_name))
+            redis:
+              url: ((redis_ip)):6379
+              password: ((redis_password))
+            time:
+              gap: ((utc_time_gap))
+            prometheus:
+              url: ((prometheus_ip)):30090
+            kubernetes:
+              url: ((kubernetes_ip)):8443
+              token: ((kubernetes_token))
+            pinpoint:
+              url: ((saas_monitoring_url)):8079
+            pinpointWas:
+              url: ((pinpoint_was_ip)):8080
+            caasbroker:
+              url: ((cassbroker_ip)):3334
+            system:
+              type: ((system_type))
 
 variables:
-- name: redis_password
-  type: password
+  - name: redis_password
+    type: password
+  - name: influxdb_ca
+    options:
+      common_name: influxdbCA
+      is_ca: true
+    type: certificate
+  - name: influxdb_ssl
+    options:
+      alternative_names:
+      - ((system_domain))
+      - '*.((system_domain))'
+      ca: influxdb_ca
+      common_name: influxdbSSL
+    type: certificate  
 
 update:
   canaries: 1
@@ -272,3 +291,4 @@ update:
   max_in_flight: 1
   serial: true
   update_watch_time: 1000-180000
+
