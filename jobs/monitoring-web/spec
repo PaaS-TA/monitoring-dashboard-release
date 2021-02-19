@@ -20,19 +20,27 @@ properties:
     description: "maria Database root user"
 
   monitoring-web.db.password:
-    default: password
+    default: PaaS-TA2020
     description: "maria Database root user PWD"
 
   monitoring-web.db.ip:
     description: "maria Database IP"
 
   monitoring-web.db.port:
-    default: 3306
+    default: 7706
     description: "maria Database port"
+
+  monitoring-web.influxdb.username:
+    description: "influx(MetricDB) database admin user"
+  
+  monitoring-web.influxdb.password:
+    description: "influx(MetricDB) database admin password"
 
   monitoring-web.influxdb.url:
     description: "influx(MetricDB) database URL"
 
+  monitoring-web.influxdb.https_enabled:
+    description: "influx(MetricDB) database SSL Status"
 
   monitoring-web.bosh.director_name:
     description: "Bosh Director Name"
