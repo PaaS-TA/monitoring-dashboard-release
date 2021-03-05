@@ -42,6 +42,18 @@ properties:
   monitoring-web.influxdb.https_enabled:
     description: "influx(MetricDB) database SSL Status"
 
+  monitoring-web.elasticsearch.username:
+    description: "elasticsearch admin user"
+
+  monitoring-web.elasticsearch.password:
+    description: "elasticsearch admin password"
+
+  monitoring-web.elasticsearch.url:
+    description: "elasticsearch master IP"
+
+  monitoring-web.elasticsearch.https_enabled:
+    description: "elasticsearch SSL Status"
+
   monitoring-web.bosh.director_name:
     description: "Bosh Director Name"
 
