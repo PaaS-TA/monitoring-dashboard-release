@@ -13,15 +13,27 @@ paas.monitoring.db.password=<%= p("monitoring-web.db.password") %>
 paas.monitoring.db.host=<%= p("monitoring-web.db.ip") %>
 paas.monitoring.db.port=<%= p("monitoring-web.db.port") %>
 
-paas.metric.db.username=
-paas.metric.db.password=
-paas.metric.db.url=<%= p("monitoring-web.influxdb.url") %>
+paas.metric.db.username=<%= p("monitoring-web.influxdb.username") %>
+paas.metric.db.password=<%= p("monitoring-web.influxdb.password") %>
+<% if p('monitoring-web.influxdb.https_enabled') == 'true' %>
+paas.metric.db.url=https://<%= p("monitoring-web.influxdb.url") %>
+<% else %>
+paas.metric.db.url=http://<%= p("monitoring-web.influxdb.url") %>
+<% end %>
 paas.metric.db.name.paasta=cf_metric_db
 paas.metric.db.name.bosh=bosh_metric_db
 paas.metric.db.name.container=container_metric_db
 
+# elasticsearch
+paas.elasticsearch.username=<%= p("monitoring-web.elasticsearch.username") %>
+paas.elasticsearch.password=<%= p("monitoring-web.elasticsearch.password") %>
+<% if p('monitoring-web.elasticsearch.https_enabled') == 'true' %>
+paas.elasticsearch.url=https://<%= p("monitoring-web.elasticsearch.url") %>
+<% else %>
+paas.elasticsearch.url=http://<%= p("monitoring-web.elasticsearch.url") %>
+<% end %>
+paas.elasticsearch.https_enabled=<%= p("monitoring-web.elasticsearch.https_enabled") %>
 
-paas.elastic.url=elastic.<%= p("monitoring-web.paasta.system_domain") %>
 
 # Bosh Info
 bosh.count=1
