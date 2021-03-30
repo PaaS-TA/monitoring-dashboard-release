@@ -20,6 +20,12 @@ properties:
 
   monitoring-batch.influxdb.url:
     description: "influx(MetricDB) database URL"
+    
+  monitoring-batch.influxdb.username:
+    description: "InfluxDB(MetricDB) user name"
+
+  monitoring-batch.influxdb.password:
+    description: "InfluxDB(MetricDB) user password"    
 
   monitoring-batch.db.username:
     default: root
