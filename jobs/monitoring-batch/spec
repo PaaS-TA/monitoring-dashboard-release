@@ -15,6 +15,9 @@ consumes:
     optional: true
 
 properties:
+  monitoring-batch.influxdb.https_enabled:
+    description: "influx(MetricDB) SSL Status"
+
   monitoring-batch.influxdb.url:
     description: "influx(MetricDB) database URL"
 

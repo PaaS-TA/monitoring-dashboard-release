@@ -6,7 +6,11 @@ influx.user =
 influx.pass =
 influx.cf_measurement = cf_metrics
 influx.cf_process_measurement = cf_process_metrics
+<% if p('monitoring-batch.influxdb.https_enabled') == 'true' %>
+influx.url=https://<%= p("monitoring-batch.influxdb.url") %>
+<% else %>
 influx.url=http://<%= p("monitoring-batch.influxdb.url") %>
+<% end %>
 
 #Metric DB Name
 influx.paasta.db_name=cf_metric_db
