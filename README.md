@@ -6,7 +6,7 @@
  
  $ cd PaaS-TA-Monitoring-Release
  
- $ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/ALMQyBq52SGG9o9/download
+ $ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/cKF7FXrJqNXYRGb/download
  
  $ unzip src.zip
  
