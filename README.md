@@ -16,7 +16,7 @@
  
 ## 2. PaaS-TA-Monitoring Release Upload
 ```
- $ sh create.sh
+ $ sh create-release.sh
 ``` 
 
 
