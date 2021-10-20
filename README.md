@@ -85,7 +85,7 @@
 ``` 
 
 
-## 3. PaaS-TA-Monitoring Deploy
+## 3. PaaS-TA monitoring-dashboard-release Deploy
 ```
  $ cd deployments
  
