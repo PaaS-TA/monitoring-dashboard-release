@@ -16,7 +16,7 @@
   </tr>
   <tr align=center>
     <td rowspan=2 colspan=2><a href="https://github.com/PaaS-TA/monitoring-deployment">모니터링</a></td>
-    <td>🚩 <a href="https://github.com/PaaS-TA/PaaS-TA-Monitoring-Release">Monitoring</a></td>
+    <td>🚩 <a href="https://github.com/PaaS-TA/monitoring-dashboard-release">Monitoring</a></td>
     <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-logsearch-release">Logsearch</a></td>
     <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-influxdb-release">InfluxDB</a></td>
     <td><a href="https://github.com/PaaS-TA/paas-ta-monitoring-redis-release">Redis</a></td>
@@ -63,13 +63,13 @@
 </table>
 <i>🚩 You are here.</i>
 
-# PaaS-TA-Monitoring-Release Guide
+# PaaS-TA monitoring-dashboard-release Guide
 
-## 1. Github Repository 및 mariadb Package Download
+## 1. Github Repository Download
 ```
- $ git clone https://github.com/PaaS-TA/PaaS-TA-Monitoring-Release.git
+ $ git clone https://github.com/PaaS-TA/monitoring-dashboard-release.git
  
- $ cd PaaS-TA-Monitoring-Release
+ $ cd monitoring-dashboard-release
  
  $ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/4knCQgxGpdxAHBp/download
  
@@ -79,7 +79,7 @@
  ```
  
  
-## 2. PaaS-TA-Monitoring Release Upload
+## 2. PaaS-TA monitoring-dashboard-release Upload
 ```
  $ sh create-release.sh
 ``` 
