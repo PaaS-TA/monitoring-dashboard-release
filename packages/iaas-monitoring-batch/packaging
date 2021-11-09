@@ -1,0 +1,14 @@
+# abort script on any command that exits with a non zero value
+set -e -x
+
+cd iaas-monitoring-batch
+
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
+export GOPATH=$PWD
+export GOBIN=${BOSH_INSTALL_TARGET}
+export PATH=$PATH:$GOROOT/bin
+export GOCACHE=/var/vcap/packages/golang/.cache/go-build
+
+mkdir -p $GOCACHE
+
+go install kr/paasta/iaas-monitoring-batch

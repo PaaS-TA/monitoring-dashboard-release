@@ -1,0 +1,5 @@
+check process monitoring-batch
+  with pidfile /var/vcap/sys/run/iaas-monitoring-batch/iaas-monitoring-batch.pid
+  start program "/var/vcap/jobs/iaas-monitoring-batch/bin/iaas-monitoring-batch_ctl start"
+  stop program "/var/vcap/jobs/iaas-monitoring-batch/bin/iaas-monitoring-batch_ctl stop"
+  group vcap
