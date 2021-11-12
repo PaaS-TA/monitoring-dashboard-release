@@ -114,3 +114,40 @@ properties:
   monitoring-web.system.type:
     description: "system type"
 
+  monitoring-web.zabbix.host:
+    description: "Zabbix server or proxy IP and Port"
+
+  monitoring-web.zabbix.admin.id:
+    default: Admin
+    description: "Zabbix Admin ID"
+
+  monitoring-web.zabbix.admin.pw:
+    default: zabbix
+    description: "Zabbix Admin password"
+
+  monitoring-web.openstack.region:
+    default: RegionOne
+    description: "Openstack Region"
+
+  monitoring-web.openstack.domain:
+    default: default
+    description: "Openstack Domain"
+
+  monitoring-web.openstack.username:
+    description: "Openstack Admin username"
+
+  monitoring-web.openstack.password:
+    description: "Openstack Admin password"
+
+  monitoring-web.openstack.tenant_name:
+    default: paas-ta-monitoring
+    description: "Openstack Project name"
+
+  monitoring-web.openstack.tenant_id:
+    description: "Openstack Project ID"
+
+  monitoring-web.openstack.endpoint:
+    description: "Openstack API URL"
+
+  monitoring-web.openstack.keystone_url:
+    description: "Openstack Keystone API URL"
