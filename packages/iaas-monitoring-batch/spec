@@ -1,0 +1,8 @@
+---
+name: iaas-monitoring-batch
+
+dependencies:
+- golang
+
+files:
+- iaas-monitoring-batch/**/*
