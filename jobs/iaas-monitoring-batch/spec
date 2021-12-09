@@ -66,3 +66,15 @@ properties:
 
   iaas-monitoring-batch.paasta.password:
     description: "paasta admin password"
+
+  iaas-monitoring-batch.zabbix.host:
+    description: "Zabbix API URL"
+
+  iaas-monitoring-batch.zabbix.admin.id:
+    default: Admin
+    desciption: "Zabbix Admin ID"
+
+  iaas-monitoring-batch.zabbix.admin.id:
+    default: zabbix
+    description: "Zabbix Admin password"
+
