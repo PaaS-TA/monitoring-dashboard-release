@@ -15,54 +15,66 @@ consumes:
     optional: true
 
 properties:
-  monitoring-batch.db.username:
+  iaas-monitoring-batch.db.username:
     default: root
     description: "maria Database root user"
 
-  monitoring-batch.db.password:
+  iaas-monitoring-batch.db.password:
     default: password
     description: "maria Database root user PWD"
 
-  monitoring-batch.db.ip:
+  iaas-monitoring-batch.db.ip:
     description: "maria Database IP"
 
-  monitoring-batch.db.port:
+  iaas-monitoring-batch.db.port:
     default: 3306
     description: "maria Database port"
 
-  monitoring-batch.mail.smtp.url:
+  iaas-monitoring-batch.mail.smtp.url:
     description: "smtp server url"
 
-  monitoring-batch.mail.smtp.port:
+  iaas-monitoring-batch.mail.smtp.port:
     default: 25
     description: "smtp server url"
 
-  monitoring-batch.mail.sender.name:
+  iaas-monitoring-batch.mail.sender.name:
     description: "smtp user name"
 
-  monitoring-batch.mail.sender.password:
+  iaas-monitoring-batch.mail.sender.password:
     description: "smtp server sender password"
 
-  monitoring-batch.mail.resource.url:
+  iaas-monitoring-batch.mail.resource.url:
     description: "mail resource(image) url"
 
-  monitoring-batch.mail.send:
+  iaas-monitoring-batch.mail.send:
     default: true
     description: "alarm send with email when alarm occured"
 
-  monitoring-batch.mail.tls:
+  iaas-monitoring-batch.mail.tls:
     default: true
     description: "smtp server auth with tls"
 
-  monitoring-batch.paasta.apiurl:
+  iaas-monitoring-batch.paasta.apiurl:
     description: "paasta api url"
 
-  monitoring-batch.paasta.uaaurl:
+  iaas-monitoring-batch.paasta.uaaurl:
     description: "paasta api url"
 
-  monitoring-batch.paasta.username:
+  iaas-monitoring-batch.paasta.username:
     default: admin
     description: "paasta admin username"
 
-  monitoring-batch.paasta.password:
+  iaas-monitoring-batch.paasta.password:
     description: "paasta admin password"
+
+  iaas-monitoring-batch.zabbix.host:
+    description: "Zabbix API URL"
+
+  iaas-monitoring-batch.zabbix.admin.id:
+    default: Admin
+    desciption: "Zabbix Admin ID"
+
+  iaas-monitoring-batch.zabbix.admin.pw:
+    default: zabbix
+    description: "Zabbix Admin password"
+

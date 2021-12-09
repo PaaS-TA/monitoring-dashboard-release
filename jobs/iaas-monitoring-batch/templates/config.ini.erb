@@ -6,21 +6,21 @@ running.env=running
 monitoring.db.type=mysql
 #PaastaMonitoring 먼저 생성 해야함.
 monitoring.db.dbname=PaastaMonitoring
-monitoring.db.username=<%= p("monitoring-batch.db.username") %>
-monitoring.db.password=<%= p("monitoring-batch.db.password") %>
-monitoring.db.host=<%= p("monitoring-batch.db.ip") %>
-monitoring.db.port=<%= p("monitoring-batch.db.port") %>
+monitoring.db.username=<%= p("iaas-monitoring-batch.db.username") %>
+monitoring.db.password=<%= p("iaas-monitoring-batch.db.password") %>
+monitoring.db.host=<%= p("iaas-monitoring-batch.db.ip") %>
+monitoring.db.port=<%= p("iaas-monitoring-batch.db.port") %>
 
 #mail.smtp.host=smtp.gmail.com
 #mail.smtp.port=465
-mail.smtp.host=<%= p("monitoring-batch.mail.smtp.url") %>
-mail.smtp.port=<%= p("monitoring-batch.mail.smtp.port") %>
-mail.sender=<%= p("monitoring-batch.mail.sender.name") %>
-mail.sender.password=<%= p("monitoring-batch.mail.sender.password") %>
-mail.resource.url=<%= p("monitoring-batch.mail.resource.url") %>
+mail.smtp.host=<%= p("iaas-monitoring-batch.mail.smtp.url") %>
+mail.smtp.port=<%= p("iaas-monitoring-batch.mail.smtp.port") %>
+mail.sender=<%= p("iaas-monitoring-batch.mail.sender.name") %>
+mail.sender.password=<%= p("iaas-monitoring-batch.mail.sender.password") %>
+mail.resource.url=<%= p("iaas-monitoring-batch.mail.resource.url") %>
 
-mail.alarm.send=<%= p("monitoring-batch.mail.send") %>
-mail.tls.send=<%= p("monitoring-batch.mail.tls") %>
+mail.alarm.send=<%= p("iaas-monitoring-batch.mail.send") %>
+mail.tls.send=<%= p("iaas-monitoring-batch.mail.tls") %>
 
 batch.interval.second=60
 gmt.time.hour.gap=0 #local에서는 9시간, PaaSta 에서는 9시간
@@ -29,8 +29,13 @@ gmt.time.hour.gap=0 #local에서는 9시간, PaaSta 에서는 9시간
 user.portal.alarm.interval=60
 
 #cf-clien==
-cf.client.api_address=<%= p("monitoring-batch.paasta.apiurl") %>
-cf.client.uaa_address=<%= p("monitoring-batch.paasta.uaaurl") %>
-cf.client.username=<%= p("monitoring-batch.paasta.username")%>
-cf.client.password=<%= p("monitoring-batch.paasta.password") %>
+cf.client.api_address=<%= p("iaas-monitoring-batch.paasta.apiurl") %>
+cf.client.uaa_address=<%= p("iaas-monitoring-batch.paasta.uaaurl") %>
+cf.client.username=<%= p("iaas-monitoring-batch.paasta.username")%>
+cf.client.password=<%= p("iaas-monitoring-batch.paasta.password") %>
 cf.client.clientid=cf
+
+# Zabbix config
+zabbix.host=<%= p("iaas-monitoring-batch.zabbix.host") %>
+zabbix.admin.id=<%= p("iaas-monitoring-batch.zabbix.admin.id") %>
+zabbix.admin.pw=<%= p("iaas-monitoring-batch.zabbix.admin.pw") %>
