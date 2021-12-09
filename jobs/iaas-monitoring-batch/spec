@@ -74,7 +74,7 @@ properties:
     default: Admin
     desciption: "Zabbix Admin ID"
 
-  iaas-monitoring-batch.zabbix.admin.id:
+  iaas-monitoring-batch.zabbix.admin.pw:
     default: zabbix
     description: "Zabbix Admin password"
 
