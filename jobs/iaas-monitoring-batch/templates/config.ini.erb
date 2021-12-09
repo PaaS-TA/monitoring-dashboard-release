@@ -34,3 +34,8 @@ cf.client.uaa_address=<%= p("monitoring-batch.paasta.uaaurl") %>
 cf.client.username=<%= p("monitoring-batch.paasta.username")%>
 cf.client.password=<%= p("monitoring-batch.paasta.password") %>
 cf.client.clientid=cf
+
+# Zabbix config
+zabbix.host=<%= p("iaas-monitoring-batch.zabbix.host") %>
+zabbix.admin.id=<%= p("iaas-monitoring-batch.zabbix.admin.id") %>
+zabbix.admin.pw=<%= p("iaas-monitoring-batch.zabbix.admin.pw") %>
