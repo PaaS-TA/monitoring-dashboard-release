@@ -9,4 +9,4 @@ BASE_DIR=/var/vcap/store/$JOB_NAME
 sudo $BASE_DIR/bin/mysql -u root < $JOB_PATH/conf/init.sql
 
 #U-07
-sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.5.9-linux-x86_64
+sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.7.3-linux-systemd-x86_64
