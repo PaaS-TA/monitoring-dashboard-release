@@ -5,3 +5,4 @@ dependencies: []
 
 files:
   - mariadb/mariadb-10.7.3-linux-systemd-x86_64.tar.gz
+  - mariadb/create.sql.gz

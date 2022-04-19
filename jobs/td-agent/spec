@@ -1,0 +1,31 @@
+---
+name: td-agent
+templates:
+  bin/pre-start: bin/pre-start
+  bin/td-agent_ctl.erb: bin/td-agent_ctl
+  conf/td-agent.conf.erb: conf/td-agent.conf
+packages:
+  - td-agent
+
+properties:
+  logging.db.name:
+    description: Logging DB name
+  logging.measurement.name:
+    description: Logging measurement name
+  logging.time.precision:
+    description: The time precision of timestamp
+    default: s
+  influxdb.http.host:
+    description: Influx DB host
+  influxdb.http.port:
+    description: Influx DB port
+    default: 8086
+  influxdb.user:
+    description: InfluxDB username
+    default: admin
+  influxdb.password:
+    description: Influx DB password
+    default: PaaS-TA2020
+  influxdb.ssl.enabled:
+    description: Use SSL when connecting to InfluxDB
+  
