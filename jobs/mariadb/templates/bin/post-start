@@ -8,5 +8,10 @@ BASE_DIR=/var/vcap/store/$JOB_NAME
 
 sudo $BASE_DIR/bin/mysql -u root < $JOB_PATH/conf/init.sql
 
+# Set up Zabbix default schema
+#sudo $BASE_DIR/bin/mysql -uzabbix -ppassword zabbix < $JOB_PATH/conf/create.sql
+sudo zcat /var/vcap/store/mariadb-data/create.sql.gz | $BASE_DIR/bin/mysql -uzabbix -ppassword zabbix
+
+
 #U-07
 sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.7.3-linux-systemd-x86_64

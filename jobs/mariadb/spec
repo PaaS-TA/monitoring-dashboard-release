@@ -6,6 +6,7 @@ templates:
   bin/post-start: bin/post-start
   conf/init.sql: conf/init.sql
   conf/mariadb.cnf: conf/mariadb.cnf
+#  conf/create.sql.gz: conf/create.sql.gz
 packages:
   - mariadb
 

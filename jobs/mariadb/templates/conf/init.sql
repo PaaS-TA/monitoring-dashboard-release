@@ -13,3 +13,10 @@ FLUSH PRIVILEGES;
 CREATE DATABASE IF NOT EXISTS PaastaMonitoring CHARACTER SET utf8 COLLATE utf8_general_ci;
 delete from mysql.user where user='';
 set global slow_query_log = ON;
+
+-- For Zabbix
+CREATE DATABASE zabbix character SET utf8 COLLATE utf8_bin;
+CREATE USER zabbix IDENTIFIED BY 'password';
+CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON zabbix.* TO zabbix;
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';

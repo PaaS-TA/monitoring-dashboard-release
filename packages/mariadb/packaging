@@ -4,3 +4,4 @@ set -e
 SRC_NAME=mariadb-10.7.3
 
 cp -r ${BOSH_COMPILE_TARGET}/mariadb/$SRC_NAME-linux-systemd-x86_64.tar.gz ${BOSH_INSTALL_TARGET}
+cp -r ${BOSH_COMPILE_TARGET}/mariadb/create.sql.gz ${BOSH_INSTALL_TARGET}

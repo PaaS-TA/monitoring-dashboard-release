@@ -13,6 +13,7 @@ paas.monitoring.db.password=<%= p("monitoring-web.db.password") %>
 paas.monitoring.db.host=<%= p("monitoring-web.db.ip") %>
 paas.monitoring.db.port=<%= p("monitoring-web.db.port") %>
 
+# InfluxDB
 paas.metric.db.username=<%= p("monitoring-web.influxdb.username") %>
 paas.metric.db.password=<%= p("monitoring-web.influxdb.password") %>
 <% if p('monitoring-web.influxdb.https_enabled') == 'true' %>
@@ -23,6 +24,7 @@ paas.metric.db.url=http://<%= p("monitoring-web.influxdb.url") %>
 paas.metric.db.name.paasta=cf_metric_db
 paas.metric.db.name.bosh=bosh_metric_db
 paas.metric.db.name.container=container_metric_db
+paas.metric.db.name.logging=logging_db
 
 # elasticsearch
 paas.elasticsearch.username=<%= p("monitoring-web.elasticsearch.username") %>

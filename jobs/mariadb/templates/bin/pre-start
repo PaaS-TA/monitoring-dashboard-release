@@ -31,4 +31,6 @@ if [ ! -d "$DATA_DIR" ]; then
   mkdir -p $MYSQL_LIB
   cp -r /var/vcap/store/mariadb/lib/plugin $MYSQL_LIB
 
+  cp /var/vcap/packages/$PKG_NAME/create.sql.gz /var/vcap/store/mariadb-data/
+
 fi

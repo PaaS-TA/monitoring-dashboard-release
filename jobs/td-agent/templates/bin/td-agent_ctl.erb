@@ -1,0 +1,27 @@
+#!/bin/bash
+
+PID_FILE=/var/vcap/sys/run/td-agent/td-agent.pid
+
+
+case $1 in
+
+  start)
+    echo "start"
+    sudo systemctl start td-agent
+  
+    # Make PID file
+    systemctl status td-agent | grep 'Main PID' | awk '{print $3}' > $PID_FILE
+    chmod 666 $PID_FILE
+  ;;
+
+  stop)
+    echo "stop"
+    sudo systemctl stop td-agent
+    rm -f $PID_FILE
+  ;;
+
+  *)
+    echo "Usage: td-agent_ctl {start|stop}"
+  ;;
+
+esac
