@@ -26,17 +26,6 @@ paas.metric.db.name.bosh=bosh_metric_db
 paas.metric.db.name.container=container_metric_db
 paas.metric.db.name.logging=logging_db
 
-# elasticsearch
-paas.elasticsearch.username=<%= p("monitoring-web.elasticsearch.username") %>
-paas.elasticsearch.password=<%= p("monitoring-web.elasticsearch.password") %>
-<% if p('monitoring-web.elasticsearch.https_enabled') == 'true' %>
-paas.elasticsearch.url=https://<%= p("monitoring-web.elasticsearch.url") %>
-<% else %>
-paas.elasticsearch.url=http://<%= p("monitoring-web.elasticsearch.url") %>
-<% end %>
-paas.elasticsearch.https_enabled=<%= p("monitoring-web.elasticsearch.https_enabled") %>
-
-
 # Bosh Info
 bosh.count=1
 bosh.0.name=<%= p("monitoring-web.bosh.director_name") %>
