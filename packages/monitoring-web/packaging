@@ -3,7 +3,7 @@ set -e -x
 
 cd monitoring-web
 
-export GOROOT=$(readlink -nf /var/vcap/packages/golang-1.14.13)
+export GOROOT=$(readlink -nf /var/vcap/packages/golang)
 export GOPATH=$PWD
 export GOBIN=${BOSH_INSTALL_TARGET}
 export PATH=$PATH:$GOROOT/bin
@@ -11,13 +11,12 @@ export GOCACHE=$GOROOT/.cache/go-build
 
 mkdir -p $GOCACHE
 
-go version
+cd src/kr/paasta/monitoring
+go mod tidy
 
-go install kr/paasta/monitoring
+go install
 
-mv $GOBIN/monitoring $GOBIN/monitoring-web
+#mv $GOBIN/monitoring $GOBIN/monitoring-web
 
-cp src/kr/paasta/monitoring/log_config.xml $GOBIN
-
-cd src/kr/paasta/monitoring/
+cp log_config.xml $GOBIN
 cp -R public/ $GOBIN

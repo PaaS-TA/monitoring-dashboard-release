@@ -39,7 +39,7 @@ case $1 in
     ulimit -n 100000
 
     cd $PACKAGE_DIR
-    exec chpst -u vcap:vcap $PACKAGE_DIR/monitoring-batch \
+    exec chpst -u vcap:vcap $PACKAGE_DIR/saas-monitoring-batch \
       1> $LOG_DIR/saas-monitoring-batch.stdout.log \
       2> $LOG_DIR/saas-monitoring-batch.stderr.log
 ;;

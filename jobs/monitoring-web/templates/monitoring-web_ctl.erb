@@ -42,7 +42,7 @@ cd $PACKAGE_DIR
 #sudo chown -R vcap:vcap $PACKAGE_DIR/public
 
 cd $PACKAGE_DIR
-exec chpst -u vcap:vcap $PACKAGE_DIR/monitoring-web \
+exec chpst -u vcap:vcap $PACKAGE_DIR/monitoring-portal \
 1> $LOG_DIR/monitoring-web.stdout.log \
 2> $LOG_DIR/monitoring-web.stderr.log
 

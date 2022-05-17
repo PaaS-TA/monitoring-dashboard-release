@@ -8,9 +8,9 @@ if [ -d ./dev_releases ]; then
   echo "delete dev_releases"
   rm -rf dev_releases
 fi
-if [ -f ./paasta-monitoring-release-5.7.0.tgz ]; then
-  echo "delete paasta-monitoring-release-5.7.0.tgz"
-  rm -rf paasta-monitoring-release-5.7.0.tgz
+if [ -f ./monitoring-dashboard-release-5.8.0.tgz ]; then
+  echo "delete monitoring-dashboard-release-5.8.0.tgz"
+  rm -rf monitoring-dashboard-release-5.8.0.tgz
 fi
 
 #if [ -d ./blobs ]; then
@@ -19,4 +19,4 @@ fi
 #fi
 #
 
-bosh create-release --force --tarball paasta-monitoring-release-5.7.0.tgz --name paasta-monitoring-release --version 5.7.0
+bosh create-release --force --tarball monitoring-dashboard-release-5.8.0.tgz --name monitoring-dashboard-release --version 5.8.0

@@ -11,4 +11,7 @@ export GOPATH=$PWD
 export GOBIN=${BOSH_INSTALL_TARGET}
 export PATH=$PATH:$GOROOT/bin
 
-go install kr/paasta/monitoring-batch
+cd src/kr/paasta/monitoring-batch
+go mod tidy
+
+go install

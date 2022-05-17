@@ -11,4 +11,7 @@ export GOCACHE=/var/vcap/packages/golang/.cache/go-build
 
 mkdir -p $GOCACHE
 
-go install kr/paasta/iaas-monitoring-batch
+cd src/kr/paasta/iaas-monitoring-batch
+go mod tidy
+
+go install

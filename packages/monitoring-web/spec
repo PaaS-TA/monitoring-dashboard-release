@@ -2,7 +2,7 @@
 name: monitoring-web
 
 dependencies:
-- golang-1.14.13
+- golang
 - monitoring-batch
 
 
