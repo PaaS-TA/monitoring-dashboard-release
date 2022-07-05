@@ -17,9 +17,6 @@ properties:
   mariadb.admin_user.password:
     description: MariaDB admin user password
     default: password
-  mariadb.admin_user.username:
-    description: MariaDB admin user name
-    default: username
   inspection.jdbc_username:
     description: MariaDB user for Inspection
     default: sonar
