@@ -12,9 +12,9 @@ if [ ! -d "$DATA_DIR" ]; then
   CONF_FILE=$BASE_DIR/mariadb.cnf
   MYSQL_LIB=/usr/local/mysql/lib
 
-  tar zxvf /var/vcap/packages/$PKG_NAME/mariadb-10.7.3-linux-systemd-x86_64.tar.gz -C /var/vcap/store/
+  tar zxvf /var/vcap/packages/$PKG_NAME/mariadb-10.7.4-linux-systemd-x86_64.tar.gz -C /var/vcap/store/
 
-  ln -s /var/vcap/store/mariadb-10.7.3-linux-systemd-x86_64 $BASE_DIR
+  ln -s /var/vcap/store/mariadb-10.7.4-linux-systemd-x86_64 $BASE_DIR
 
   sudo chmod 777 /tmp
   sudo chown vcap:vcap /var/vcap/sys/log/mariadb
