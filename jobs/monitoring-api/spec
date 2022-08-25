@@ -1,0 +1,63 @@
+---
+name: monitoring-api
+
+templates:
+    monitoring-api_ctl: bin/monitoring-api_ctl
+    .env: conf/.env
+
+packages:
+  - golang
+  - pidutils
+  - monitoring-api
+
+properties:
+  monitoring_services:
+    description: "Monitoring services"
+  bosh.ip:
+    description: "BOSH IP"
+  bosh.uuid:
+    description: "BOSH UUID"
+  bosh.client_admin_secret:
+    description: "BOSH client admin secret"
+  paasta.system_domain:
+    description: "PaaS-TA system domain"
+  mariadb.host:
+    description: "PaaS-TA Monitoring database IP"
+  mariadb.port:
+    description: "PaaS-TA Monitoring database port"
+  mariadb.username:
+    description: "PaaS-TA Monitoring database username"
+  mariadb.password:
+    description: "PaaS-TA Monitoring database password"
+  influxdb.host:
+    description: "PaaS-TA Monitoring time series database IP"
+  influxdb.username:
+    description: "PaaS-TA Monitoring time series database username"
+  influxdb.password:
+    description: "PaaS-TA Monitoring time series database password"
+  redis.ip:
+    description: "Redis IP address"
+  redis.password:
+    description: "Redis password"
+  openstack.endpoint:
+    description: "OpenStack endpoint"
+  openstack.domain:
+    description: "OpenStack domaion"
+  openstack.username:
+    description: "OpenStack username"
+  openstack.password:
+    description: "OpenStack password"
+  openstack.tenant_id:
+    description: "OpenStack tenant ID"
+  zabbix.host:
+    description: "Zabbix server host"
+  zabbix.admin_id:
+    description: "Zabbix server admin ID"
+  zabbix.admin_pw:
+    description: "Zabbix server admin PW"
+  kubernetes.master_node_ip:
+    description: "Kubernetes Master node IP"
+  kubernetes.token:
+    description: "Kubernetes token"
+  pinpoint.web:
+    description: "Pinpoint Web IP"

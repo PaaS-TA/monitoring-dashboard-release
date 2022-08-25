@@ -1,0 +1,52 @@
+#!/bin/bash
+set -ex
+
+RUN_DIR=/var/vcap/sys/run/monitoring-api
+LOG_DIR=/var/vcap/sys/log/monitoring-api
+PACKAGE_DIR=/var/vcap/packages/monitoring-api
+PID_FILE=$RUN_DIR/monitoring-api.pid
+
+source /var/vcap/packages/pidutils/pidutils.sh
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR
+    
+    mkdir -p $LOG_DIR
+    sudo chown -R vcap:vcap $LOG_DIR/
+
+    mkdir -p $PACKAGE_DIR
+    sudo cp /var/vcap/jobs/monitoring-api/conf/.env $PACKAGE_DIR
+    sudo chown -R vcap:vcap $PACKAGE_DIR/
+    
+    pid_guard $PID_FILE "monitoring-api"
+    
+    export GOMAXPROCS=$(nproc)
+
+    # echo $$ > $PID_FILE
+    PID=$$
+    echo "Current PID is $PID..."
+    echo $PID > $PID_FILE
+    
+    # Change file mode to 0666
+    chmod 666 $PID_FILE
+
+    # Allowed number of open file descriptors
+    ulimit -n 100000
+
+    cd $PACKAGE_DIR
+    exec chpst -u vcap:vcap $PACKAGE_DIR/paasta-monitoring-api \
+    1> $LOG_DIR/monitoring-api.stdout.log \
+    2> $LOG_DIR/monitoring-api.stderr.log
+  ;;
+
+  stop)
+    kill_and_wait $PID_FILE
+  ;;
+
+  *)
+    echo "Usage: monitoring-api_ctl {start|stop}"
+  ;;
+
+esac

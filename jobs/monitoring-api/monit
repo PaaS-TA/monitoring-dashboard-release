@@ -1,0 +1,5 @@
+check process monitoring-api
+  with pidfile /var/vcap/sys/run/monitoring-api/monitoring-api.pid
+  start program "/var/vcap/jobs/monitoring-api/bin/monitoring-api_ctl start"
+  stop program "/var/vcap/jobs/monitoring-api/bin/monitoring-api_ctl stop"
+  group vcap

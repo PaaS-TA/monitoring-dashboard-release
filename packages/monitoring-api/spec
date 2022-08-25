@@ -1,0 +1,8 @@
+---
+name: monitoring-api
+
+dependencies:
+- golang
+
+files:
+- monitoring-api/**/*
