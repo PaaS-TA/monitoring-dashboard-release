@@ -14,4 +14,4 @@ sudo zcat /var/vcap/store/mariadb-data/server.sql.gz | $BASE_DIR/bin/mysql -uzab
 
 
 #U-07
-sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.7.5-linux-systemd-x86_64
+sudo chown -R  vcap:vcap /var/vcap/store/mariadb-10.7.6-linux-systemd-x86_64
