@@ -1,0 +1,7 @@
+---
+name: fluentd
+
+dependencies: []
+
+files:
+  - fluentd/fluentd-1.15.2.tar.gz

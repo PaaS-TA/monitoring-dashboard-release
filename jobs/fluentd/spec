@@ -1,11 +1,13 @@
 ---
-name: td-agent
+name: fluentd
+
 templates:
   bin/pre-start: bin/pre-start
-  bin/td-agent_ctl.erb: bin/td-agent_ctl
-  conf/td-agent.conf.erb: conf/td-agent.conf
+  bin/fluentd_ctl.erb: bin/fluentd_ctl
+  conf/fluent.conf.erb: conf/fluent.conf
 packages:
-  - td-agent
+  - fluentd
+  - ruby
 
 properties:
   logging.db.name:
@@ -28,4 +30,3 @@ properties:
     default: PaaS-TA2020
   influxdb.ssl.enabled:
     description: Use SSL when connecting to InfluxDB
-  

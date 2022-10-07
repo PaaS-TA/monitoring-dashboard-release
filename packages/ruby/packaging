@@ -1,0 +1,20 @@
+set -e
+
+RUBY_VERSION=2.7.6
+
+echo "Extracting ruby archive..."
+tar xzf ruby/ruby-2.7.6.tar.gz
+
+cd ruby-${RUBY_VERSION}
+./configure \
+    --prefix=${BOSH_INSTALL_TARGET}
+make
+make install
+
+#echo "Installing ruby..."
+#pushd ruby/ruby-${RUBY_VERSION}
+#  ./configure \
+#    --prefix=${BOSH_INSTALL_TARGET}
+#  make
+#  make install
+#popd

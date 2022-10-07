@@ -1,6 +1,0 @@
-set -e
-
-cp -a td-agent/install-ubuntu-bionic-td-agent4.sh ${BOSH_INSTALL_TARGET}
-cd ${BOSH_INSTALL_TARGET}
-sudo chmod +x *.sh
-#sh install-ubuntu-bionic-td-agent4.sh

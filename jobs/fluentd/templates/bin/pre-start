@@ -1,0 +1,18 @@
+#!/bin/bash
+  
+set -e
+
+FLUENTD_VERISON=1.15.2
+
+#tar zxvf /var/vcap/packages/fluentd/fluentd-${FLUENTD_VERISON}.tar.gz
+
+export PATH=$PATH:/var/vcap/packages/ruby/bin
+export PATH=$PATH:/var/vcap/packages/fluentd/bin
+
+cd /var/vcap/packages/fluentd/bin
+sudo ./fluent-gem install fluent-plugin-influxdb
+
+#bundle install
+#bundle exec rake build
+#gem install pkg/fluentd-${FLUENTD_VERISON}.gem
+

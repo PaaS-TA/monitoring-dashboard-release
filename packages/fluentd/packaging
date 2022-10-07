@@ -1,0 +1,9 @@
+set -e
+  
+FLUENTD_VERSION=1.15.2
+
+echo "Uncompress Fluentd archive..."
+tar xzf fluentd/fluentd-${FLUENTD_VERSION}.tar.gz
+
+echo "Move Fluentd archive..."
+cp -R fluentd-${FLUENTD_VERSION}/* ${BOSH_INSTALL_TARGET}

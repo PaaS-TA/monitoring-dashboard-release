@@ -1,7 +1,0 @@
----
-name: td-agent
-
-dependencies: []
-
-files: [td-agent/install-ubuntu-bionic-td-agent4.sh]
-
