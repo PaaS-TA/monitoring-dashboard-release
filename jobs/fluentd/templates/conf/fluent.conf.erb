@@ -129,9 +129,13 @@
 
 <source>
   @type syslog
-  port 2514
+  port <%= p("fluentd.port") %>
   bind 0.0.0.0
   tag system
+  <% if p("fluentd.transport") == "tcp" %>
+  <transport tcp>
+  </transport>
+  <% end %>
   <parse>
     message_format rfc5424
     localtime true
