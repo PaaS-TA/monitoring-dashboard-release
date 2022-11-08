@@ -71,7 +71,7 @@
  
  $ cd monitoring-dashboard-release
  
- $ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/Px9KYe4a9JtWdKA/download
+ $ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/M4m4wXaxHqESoKC/download
  
  $ unzip src.zip
  
