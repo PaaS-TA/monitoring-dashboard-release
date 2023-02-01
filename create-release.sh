@@ -10,9 +10,9 @@ if [ -d ./dev_releases ]; then
   rm -rf dev_releases
 fi
 
-if [ -f ./monitoring-dashboard-release-5.8.2.tgz ]; then
-  echo "delete monitoring-dashboard-release-5.8.2.tgz"
-  rm -rf monitoring-dashboard-release-5.8.2.tgz
+if [ -f ./monitoring-dashboard-release-5.8.5.tgz ]; then
+  echo "delete monitoring-dashboard-release-5.8.5.tgz"
+  rm -rf monitoring-dashboard-release-5.8.5.tgz
 fi
 
 #if [ -d ./blobs ]; then
@@ -21,4 +21,4 @@ fi
 #fi
 #
 
-bosh create-release --force --tarball monitoring-dashboard-release-5.8.2.tgz --name monitoring-dashboard-release --version 5.8.2
+bosh create-release --force --tarball monitoring-dashboard-release-5.8.5.tgz --name monitoring-dashboard-release --version 5.8.5

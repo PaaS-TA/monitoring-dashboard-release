@@ -4,5 +4,5 @@ name: mariadb
 dependencies: []
 
 files:
-  - mariadb/mariadb-10.7.6-linux-systemd-x86_64.tar.gz
+  - mariadb/mariadb-10.7.7-linux-systemd-x86_64.tar.gz
   - mariadb/server.sql.gz
